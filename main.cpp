@@ -82,19 +82,24 @@ int main() {
     cout << endl;
 
     ShoppingCart cart1(name, date);
-    char option = '\0';  // Initialize option to a null character or another non-'q' value
+    char option = '\0';
+   PrintMenu();
+   cout << endl;
+   
+   while (option != 'q') {
+      cout << "Choose an option:" << endl;
+      cin >> option;
+      if (option == 'q') {
+         break;
+      }    else if (option == 'a' || option == 'd' || option == 'c' || option == 'i' || option == 'o') {
+         ExecuteMenu(option, cart1);
+         PrintMenu();
+         cout<<endl;
+      }
+    // No need for an else statement to handle invalid inputs
+   }
 
-    do {
-        PrintMenu();
-        cout << endl;
-        cout << "Choose an option:" << endl;
-        cin >> option;
-        cin.ignore();  // Clear the newline character left in the input buffer after cin >>
 
-        if (option != 'q') {
-            ExecuteMenu(option, cart1);
-        }
-    } while (option != 'q');
 
     return 0;
 }
