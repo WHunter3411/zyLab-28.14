@@ -19,6 +19,12 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
     if (option == 'o') {
         cout << "OUTPUT SHOPPING CART" << endl;
         cout << theCart.GetCustomerName() << "'s Shopping Cart - " << theCart.GetDate() << endl;
+        cout << "Number of Items: " << theCart.GetNumItemsInCart() << endl;
+        cout << endl;
+        theCart.PrintTotal();
+        cout << endl;
+        cout << "Total: $" << theCart.GetCostOfCart() << endl;
+        cout << endl;
     }
     if (option == 'i') {
         cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
@@ -71,23 +77,25 @@ int main() {
     getline(cin, date);
     
     cout << endl;
-    
-
     cout << "Customer name: " << name << endl;
     cout << "Today's date: " << date << endl;
-    
     cout << endl;
 
     ShoppingCart cart1(name, date);
-    PrintMenu();
-    cout << endl;
+    char option = '\0';  // Initialize option to a null character or another non-'q' value
 
-    char option;
     do {
+        PrintMenu();
+        cout << endl;
         cout << "Choose an option:" << endl;
         cin >> option;
-        ExecuteMenu(option, cart1);
+        cin.ignore();  // Clear the newline character left in the input buffer after cin >>
+
+        if (option != 'q') {
+            ExecuteMenu(option, cart1);
+        }
     } while (option != 'q');
 
     return 0;
 }
+
