@@ -9,7 +9,7 @@ using namespace std;
         this->itemName = itemName;
     }
     
-    string ItemToPurchase::GetName() {
+    string ItemToPurchase::GetName() const{
         return itemName;
     }
 
@@ -17,7 +17,7 @@ using namespace std;
         this->itemPrice = itemPrice;
     }
 
-    int ItemToPurchase::GetPrice() {
+    int ItemToPurchase::GetPrice() const{
         return itemPrice;
     }
 
@@ -25,8 +25,29 @@ using namespace std;
         this->itemQuantity = itemQuantity;
     }
 
-    int ItemToPurchase::GetQuantity() {
+    int ItemToPurchase::GetQuantity() const{
         return itemQuantity;
+    }
+    
+    void ItemToPurchase::SetDescription(string itemDescription) {
+       this->itemDescription = itemDescription;
+    }
+    
+    string ItemToPurchase::GetDescription() const{
+       return itemDescription;
+       
+    }
+    
+    void ItemToPurchase::PrintItemCost() {
+       int totalPrice;
+       totalPrice = GetQuantity() * GetPrice();
+       cout << GetName() << " " << GetQuantity() << " @ $" << GetPrice() << " = $" << totalPrice << endl; 
+
+    }
+    
+    void ItemToPurchase::PrintItemDescription() {
+       cout << GetName() << ": " << GetDescription() << endl;
+
     }
 
     //Constructor
@@ -35,10 +56,12 @@ using namespace std;
         itemName = "none";
         itemPrice = 0;
         itemQuantity = 0;
+        itemDescription = "none";
     }
-
-    ItemToPurchase::ItemToPurchase(string itemName, int itemPrice, int itemQuantity) {
-        this->itemName = itemName;
-        this->itemPrice = itemPrice;
-        this->itemQuantity = itemQuantity;
-    }
+    
+   ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity) {
+      itemName = name;
+      itemDescription = description;
+      itemPrice = price;
+      itemQuantity = quantity;
+}
