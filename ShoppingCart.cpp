@@ -75,8 +75,19 @@ void ShoppingCart::PrintTotal() {
     if (cartItems.size() == 0) {
         cout << "SHOPPING CART IS EMPTY" << endl;
     } else {
-        int totalItems = GetNumItemsInCart();
-        cout << "Total number of items: " << totalItems << endl;
+        //int totalItems = GetNumItemsInCart();
+        //cout << customerName << "'s Shopping Cart - " << currentDate << endl;
+        //cout << "Number of Items: " << totalItems << endl << endl;
+
+        double totalCost = 0;
+        for (i = 0; i < cartItems.size(); i++) {
+            cartItems.at(i).PrintItemCost();
+            totalCost += cartItems.at(i).GetPrice() * cartItems.at(i).GetQuantity();
+        }
+
+        //if (totalItems > 0) {
+            //cout << "Total: $" << totalCost << endl;
+        //}
     }
 }
 
