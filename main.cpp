@@ -1,5 +1,7 @@
 #include <iostream>
 #include <iomanip>
+#include <limits>
+
 using namespace std;
 
 #include "ShoppingCart.h"
@@ -58,7 +60,11 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
         theCart.AddItem(item);  
     }
     if (option == 'd') {
+        string name = "none";
         cout << "REMOVE ITEM FROM CART" << endl;
+        cout << "Enter name of item to remove:" << endl;
+        getline(cin, name);
+        theCart.RemoveItem(name);
         
     }
     if (option == 'c') {
