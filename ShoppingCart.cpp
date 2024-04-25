@@ -22,11 +22,16 @@ void ShoppingCart::AddItem(ItemToPurchase item) {
 //Methods
 
 void ShoppingCart::RemoveItem(string name) {
+   bool found = false;
    for (i = 0; i < cartItems.size(); i++) {
       if (cartItems.at(i).GetName() == name) {
+         found = true;
          cartItems.erase(cartItems.begin() + i);
          break;
       }
+   }
+   if (!found) {
+      cout << "Item not found in the cart. Nothing removed." << endl;
    }
 }
 
