@@ -35,18 +35,19 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
         int itemPrice;
 
         cout << "ADD ITEM TO CART" << endl;
-        cout << "Enter the item name: ";
+        cout << "Enter the item name:" << endl;
         cin.ignore(); 
         getline(cin, itemName);
 
-        cout << "Enter the item description: ";
+        cout << "Enter the item description:" << endl;;
         getline(cin, itemDescription);
 
-        cout << "Enter the item price: ";
+        cout << "Enter the item price:" << endl;;
         cin >> itemPrice;
 
-        cout << "Enter the item quantity: ";
+        cout << "Enter the item quantity:" << endl;;
         cin >> itemQuantity;
+        cout << endl;
 
         ItemToPurchase item;
         item.SetName(itemName);
