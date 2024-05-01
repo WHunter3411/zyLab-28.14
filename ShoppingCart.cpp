@@ -27,11 +27,13 @@ void ShoppingCart::RemoveItem(string name) {
       if (cartItems.at(i).GetName() == name) {
          found = true;
          cartItems.erase(cartItems.begin() + i);
+         cout << endl;
          break;
       }
    }
    if (!found) {
-      cout << "Item not found in the cart. Nothing removed." << endl;
+      cout << "Item not found in cart. Nothing removed." << endl;
+      cout << endl;
    }
 }
 
@@ -100,7 +102,7 @@ void ShoppingCart::PrintDescriptions() {
     if (cartItems.size() == 0) {
         cout << "SHOPPING CART IS EMPTY" << endl;
     } else {
-        cout << "Item Descriptions:" << endl;
+        cout << "Item Descriptions" << endl;
         for (i = 0; i < cartItems.size(); i++) {
             cout << cartItems.at(i).GetName() << ": " << cartItems.at(i).GetDescription() << endl;
         }
