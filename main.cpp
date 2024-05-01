@@ -1,7 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <limits>
-
 using namespace std;
 
 #include "ShoppingCart.h"
@@ -28,9 +26,15 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
         cout << "Total: $" << theCart.GetCostOfCart() << endl;
         cout << endl;
     }
-    if (option == 'i') {
-        cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
-    }
+if (option == 'i') {
+    cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
+    cout << theCart.GetCustomerName() << "'s Shopping Cart - " << theCart.GetDate() << endl;
+    cout << endl;
+
+    theCart.PrintDescriptions();
+    cout << endl;
+}
+
     if (option == 'a') {
         int itemQuantity;
         string itemName, itemDescription;
@@ -63,14 +67,28 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
         string name = "none";
         cout << "REMOVE ITEM FROM CART" << endl;
         cout << "Enter name of item to remove:" << endl;
+        cin.ignore();
         getline(cin, name);
         theCart.RemoveItem(name);
         
     }
-    if (option == 'c') {
-        cout << "CHANGE ITEM QUANTITY" << endl;
-        
-    }
+if (option == 'c') {
+    string itemName;
+    int newQuantity;
+    cout << "CHANGE ITEM QUANTITY" << endl;
+    cout << "Enter the item name:" << endl;
+    cin.ignore();
+    getline(cin, itemName);
+    cout << "Enter the new quantity:" << endl;
+    cin >> newQuantity;
+
+    ItemToPurchase item;
+    item.SetName(itemName);
+    item.SetQuantity(newQuantity);
+    theCart.ModifyItem(item);
+    cout << endl;
+}
+
 }
 
 
