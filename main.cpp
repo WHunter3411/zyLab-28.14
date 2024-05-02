@@ -1,3 +1,5 @@
+//Clark Godinez and Wade Hunter
+//https://github.com/WHunter3411/zyLab-28.14.git
 #include <iostream>
 #include <iomanip>
 using namespace std;
